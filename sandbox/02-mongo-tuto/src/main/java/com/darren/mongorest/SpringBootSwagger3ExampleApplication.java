@@ -10,9 +10,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories
 public class SpringBootSwagger3ExampleApplication {
 
-	@Autowired
-	GroceryItemRepository groceryItemRepo;
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootSwagger3ExampleApplication.class, args);
 	}

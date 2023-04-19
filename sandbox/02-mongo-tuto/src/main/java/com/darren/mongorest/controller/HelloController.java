@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.Callable;
+
 @RestController
 @RequestMapping("/api")
 public class HelloController {
@@ -19,7 +21,9 @@ public class HelloController {
 
     @Operation(summary = "hello")
     @GetMapping("/hello")
-    public ResponseEntity<String> hello(){
-        return new ResponseEntity<>(helloService.helloOnce(), HttpStatus.OK);
+    public Callable<ResponseEntity<String>> hello(){
+        return () -> {
+            return helloService.helloOnce();
+        };
     }
 }
