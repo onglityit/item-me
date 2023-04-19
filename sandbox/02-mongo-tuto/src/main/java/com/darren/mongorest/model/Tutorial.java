@@ -1,7 +1,9 @@
 package com.darren.mongorest.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "tutorials")
 public class Tutorial {
 
   @Schema(accessMode = Schema.AccessMode.READ_ONLY)
