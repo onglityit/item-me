@@ -28,9 +28,9 @@ public class GroceryServiceImpl implements GroceryService{
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
-    private boolean isExist(GroceryItem groceryItem){
-        return false;
-    }
+    //private boolean isExist(GroceryItem groceryItem){
+    //    return false;
+    //}
 
 
 }
