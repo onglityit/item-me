@@ -53,8 +53,6 @@ public class GroceryServiceTests {
 		groceryItemRepository.save(groceryItemInserted);
 		groceryItemFound = groceryItemRepository.findItemById(generatedUuid);
 		assertNotNull(groceryItemFound);
-
-		
 		assertEquals(groceryItemInserted, groceryItemFound);
 		groceryItemRepository.deleteById(generatedUuid);
 

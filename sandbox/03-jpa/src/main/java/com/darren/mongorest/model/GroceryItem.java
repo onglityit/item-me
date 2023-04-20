@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 @Document("groceryitems")
-@Getter @Setter @ToString @EqualsAndHashCode(callSuper = true)
+@Getter @Setter @ToString @EqualsAndHashCode(callSuper = false)
 @SuperBuilder @NoArgsConstructor
 public class GroceryItem extends BaseEntity{
 
