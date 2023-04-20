@@ -1,6 +1,7 @@
 package com.darren.mongorest.model;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,13 +11,10 @@ import javax.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 @Document("groceryitems")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
-public class GroceryItem {
+@Getter @Setter @ToString @EqualsAndHashCode(callSuper = true)
+@SuperBuilder @NoArgsConstructor
+public class GroceryItem extends BaseEntity{
 
-    @Id
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
     @NotBlank(message = "Name cannot be blank")
     private String name;
     private int quantity;

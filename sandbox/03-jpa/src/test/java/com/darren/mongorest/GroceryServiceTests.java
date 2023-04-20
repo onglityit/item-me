@@ -43,10 +43,18 @@ public class GroceryServiceTests {
 	void givenGroceryItemRepository_whenInsertGroceryItem_shouldFindGroceryItem(){
 
 		GroceryItem groceryItemFound,
-				groceryItemInserted = new GroceryItem(generatedUuid, "hello", 1, "a");
+				groceryItemInserted = GroceryItem.builder()
+						.id(generatedUuid)
+						.name("hello")
+						.quantity(1)
+						.category("a")
+						.createdBy(generatedUuid)
+						.build();
 		groceryItemRepository.save(groceryItemInserted);
 		groceryItemFound = groceryItemRepository.findItemById(generatedUuid);
 		assertNotNull(groceryItemFound);
+
+		
 		assertEquals(groceryItemInserted, groceryItemFound);
 		groceryItemRepository.deleteById(generatedUuid);
 
