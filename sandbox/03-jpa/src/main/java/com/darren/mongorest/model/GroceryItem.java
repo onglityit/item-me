@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 @Document("groceryitems")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
 public class GroceryItem {
 
     @Id
