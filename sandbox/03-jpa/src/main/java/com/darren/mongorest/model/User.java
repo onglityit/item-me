@@ -15,4 +15,5 @@ public abstract class User extends BaseEntity{
     //@DocumentReference(lazy=true)
     @DocumentReference(lookup="{'user':?#{#self._id} }")
     private List<Contact> contacts;
+    private boolean isVerified;
 }

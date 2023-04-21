@@ -3,6 +3,7 @@ package com.darren.mongorest.model;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.GenerationType;
 
 import jakarta.validation.constraints.NotBlank;
 
-@Document("groceryitems")
+@Document("groceryitems") @TypeAlias("groceryitems")
 @Getter @Setter @ToString @EqualsAndHashCode(callSuper = false)
 @SuperBuilder @NoArgsConstructor
 public class GroceryItem extends BaseEntity{
