@@ -10,4 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @SuperBuilder @NoArgsConstructor
 public class Contact extends BaseEntity{
     private User user;
+    String contactInfo;
+    String contactType; //Anti Pattern - should use enum as bestPractice
 }

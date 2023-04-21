@@ -1,9 +1,9 @@
 package com.darren.mongorest.model;
 
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
@@ -12,8 +12,9 @@ import java.util.List;
 
 public abstract class User extends BaseEntity{
     @ReadOnlyProperty
-    //@DocumentReference(lazy=true)
     @DocumentReference(lookup="{'user':?#{#self._id} }")
+    @Singular
     private List<Contact> contacts;
     private boolean isVerified;
+    String username;
 }

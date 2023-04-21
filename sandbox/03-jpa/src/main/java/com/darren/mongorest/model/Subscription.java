@@ -13,5 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Subscription extends BaseEntity {
     @Builder.Default
     private boolean isActive = true;
+
     private @NotNull Landlord landlord;
+    String companyNickName;
 }

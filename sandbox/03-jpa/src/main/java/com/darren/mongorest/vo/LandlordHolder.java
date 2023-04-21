@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class LandlordHolder {
-    String name;
+    String username;
     String email;
-    String landlordNickName;
+    String companyNickName;
     String landlordLogoURL;
 }
