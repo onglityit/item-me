@@ -14,17 +14,17 @@ import java.util.List;
 public class GroceryServiceImpl implements GroceryService{
 
     @Autowired
-    GroceryItemRepository groceryItemRepo;
+    GroceryItemRepository groceryItemRepository;
 
     static List<GroceryItem> groceryItems = new ArrayList<>();
 
     public ResponseEntity<String> updateInsertGroceryItem(GroceryItem groceryItem){
-        groceryItemRepo.save(groceryItem);
+        groceryItemRepository.save(groceryItem);
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
     public ResponseEntity<String> deleteGroceryItemById(String id){
-        groceryItemRepo.deleteById(id);
+        groceryItemRepository.deleteById(id);
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
