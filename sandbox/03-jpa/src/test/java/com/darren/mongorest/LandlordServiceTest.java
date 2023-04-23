@@ -41,6 +41,6 @@ public class LandlordServiceTest {
                 .username("Test1234!")
                 .build();
         landlordRepository.save(landlordInserted);
-        //landlordFound = landlordRepository.findLandlordById();
+        landlordFound = landlordRepository.findLandlordById(generatedUuid);
     }
 }
