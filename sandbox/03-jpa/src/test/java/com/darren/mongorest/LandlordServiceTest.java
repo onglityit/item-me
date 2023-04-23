@@ -5,14 +5,15 @@ import com.darren.mongorest.model.Contact;
 import com.darren.mongorest.model.Landlord;
 import com.darren.mongorest.model.enums.ContactTypeEnum;
 import com.darren.mongorest.repo.LandlordRepository;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
@@ -42,5 +43,8 @@ public class LandlordServiceTest {
                 .build();
         landlordRepository.save(landlordInserted);
         landlordFound = landlordRepository.findLandlordById(generatedUuid);
+        assertNotNull(landlordFound);
+        Assertions.assertEquals(landlordFound, landlordInserted);
+        landlordRepository.deleteById(generatedUuid);
     }
 }
