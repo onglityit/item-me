@@ -30,6 +30,7 @@ public class LandlordServiceImpl implements LandlordService {
                 .id(UUID.randomUUID().toString())
                 .contact(Contact.builder()
                         .contactType(ContactTypeEnum.EMAIL.name())
+                        .contactInfo(landlordSubscriptionDataHolder.getLandlordHolder().getEmail())
                         .build())
                 .username(landlordSubscriptionDataHolder.getLandlordHolder().getUsername())
 
