@@ -7,12 +7,7 @@ import com.darren.mongorest.model.Subscription;
 import com.darren.mongorest.model.enums.ContactTypeEnum;
 import com.darren.mongorest.repo.LandlordRepository;
 import com.darren.mongorest.repo.SubscriptionRepository;
-
 import com.darren.mongorest.service.LandlordService;
-import com.darren.mongorest.service.LandlordServiceImpl;
-import com.darren.mongorest.vo.LandlordHolder;
-import com.darren.mongorest.vo.LandlordSubscriptionDataHolder;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -23,20 +18,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest
-public class LandlordServiceTest {
+public class LandlordRepositoryTest {
     static String generatedLandlordUuid;
     static String generatedSubscriptionUuid;
     static Landlord landlordFound, landlordInserted;
@@ -47,6 +34,7 @@ public class LandlordServiceTest {
     @Autowired
     SubscriptionRepository subscriptionRepository;
 
+    @Autowired
     LandlordService landlordService;
 
     @BeforeAll
@@ -68,32 +56,21 @@ public class LandlordServiceTest {
                 .companyNickName("best company 01")
                 .landlord(landlordInserted)
                 .build();
-
-        //landlordService = new LandlordServiceImpl(landlordRepository);
     }
 
-
     @Test
-    @Order(2)
-    void givenLandlordService_whenAddLandlordSubscription_shouldFindLandlord(){
-        //var landlordSubscriptionDataHolder
-        //        = LandlordSubscriptionDataHolder.builder()
-        //        .landlordHolder(
-        //                LandlordHolder.builder()
-        //                        .username("Test2345!")
-        //                        .email("a@a.a")
-        //                        .companyNickName("best company 01")
-        //                        .build()
-        //        )
-        //        .build();
-
-        //landlordService.addLandlordSubscription(landlordSubscriptionDataHolder);
+    @Order(1)
+    void givenLandlordRepository_whenAddNewLandlord_shouldFindLandlord(){
 
 
-        when(landlordRepository.save(any(Landlord.class))).thenReturn(landlordInserted);
-        landlordFound = landlordRepository.save(landlordInserted);
+        landlordRepository.save(landlordInserted);
+        subscriptionRepository.save(subscription);
+
+        landlordFound = landlordRepository.findLandlordById(generatedLandlordUuid);
         assertNotNull(landlordFound);
         assertEquals(landlordFound, landlordInserted);
+        landlordRepository.deleteById(generatedLandlordUuid);
+        subscriptionRepository.deleteById(generatedSubscriptionUuid);
     }
 
 }
