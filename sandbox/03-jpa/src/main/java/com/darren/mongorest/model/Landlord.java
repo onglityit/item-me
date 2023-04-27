@@ -10,8 +10,8 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import java.util.List;
 
 @Document("users") @TypeAlias("users")
-@Getter @Setter @ToString @EqualsAndHashCode(callSuper = false)
-@SuperBuilder @NoArgsConstructor
+@Data
+@SuperBuilder @NoArgsConstructor @AllArgsConstructor(access = AccessLevel.PRIVATE)
 
 public class Landlord extends User{
     @ReadOnlyProperty

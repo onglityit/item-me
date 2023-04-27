@@ -1,9 +1,10 @@
 package com.darren.mongorest.vo;
 
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-@Data @SuperBuilder
+@Data @Builder
+@NoArgsConstructor @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class LandlordHolder {
     String username;
     String email;
