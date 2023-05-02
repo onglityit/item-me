@@ -14,7 +14,5 @@ import java.util.List;
 @SuperBuilder @NoArgsConstructor @AllArgsConstructor(access = AccessLevel.PRIVATE)
 
 public class Landlord extends User{
-    @ReadOnlyProperty
-    @DocumentReference(lookup="{'landlord':?#{#self._id} }")
     private List<Subscription> subscriptions;
 }

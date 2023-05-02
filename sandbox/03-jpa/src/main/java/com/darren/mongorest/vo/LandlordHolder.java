@@ -1,7 +1,6 @@
 package com.darren.mongorest.vo;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 @Data @Builder
 @NoArgsConstructor @AllArgsConstructor(access = AccessLevel.PRIVATE)

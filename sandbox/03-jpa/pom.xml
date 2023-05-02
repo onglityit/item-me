@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.darren</groupId>
-	<artifactId>spring-boot-swagger-3-example</artifactId>
+	<artifactId>item-me</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-swagger-3-example</name>
 	<description>Spring Boot and Swagger 3 example: Rest API Documentation</description>

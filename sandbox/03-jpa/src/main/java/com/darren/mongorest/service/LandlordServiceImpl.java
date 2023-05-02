@@ -4,13 +4,11 @@ import com.darren.mongorest.model.Contact;
 import com.darren.mongorest.model.Landlord;
 import com.darren.mongorest.model.Subscription;
 import com.darren.mongorest.model.enums.ContactTypeEnum;
+import com.darren.mongorest.model.response.SubscriptionResp;
 import com.darren.mongorest.repo.LandlordRepository;
 import com.darren.mongorest.repo.SubscriptionRepository;
 import com.darren.mongorest.vo.LandlordSubscriptionDataHolder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -26,7 +24,7 @@ public class LandlordServiceImpl implements LandlordService {
 
 
     @Override
-    public ResponseEntity<String> addLandlordSubscription(LandlordSubscriptionDataHolder landlordSubscriptionDataHolder) {
+    public String addLandlordSubscription(LandlordSubscriptionDataHolder landlordSubscriptionDataHolder) {
 
         var landlord = Landlord.builder()
                 .id(UUID.randomUUID().toString())
@@ -40,7 +38,7 @@ public class LandlordServiceImpl implements LandlordService {
 
         var subscription = Subscription.builder()
                 .id(UUID.randomUUID().toString())
-                .landlord(landlord)
+                //.landlord(landlord)
                 .build();
 
         landlordRepository.save(landlord);
@@ -48,13 +46,20 @@ public class LandlordServiceImpl implements LandlordService {
 
 
 
-        return new ResponseEntity<>("success", HttpStatus.OK);
+        return "success";
     }
 
     @Override
-    public ResponseEntity<String> deleteLandlordById(String id) {
+    public String deleteLandlordById(String id) {
         landlordRepository.deleteById(id);
-        return new ResponseEntity<>("success", HttpStatus.OK);
+        return "success";
+    }
+
+    public SubscriptionResp getAllLandlordSubscriptionByLandlordId(String id){
+        return SubscriptionResp.builder().subscriptions(
+                landlordRepository.findLandlordById(id).getSubscriptions()
+        ).build();
+
     }
 
 }

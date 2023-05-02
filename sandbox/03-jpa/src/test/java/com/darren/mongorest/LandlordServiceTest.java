@@ -66,7 +66,7 @@ public class LandlordServiceTest {
         subscription = Subscription.builder()
                 .id(UUID.randomUUID().toString())
                 .companyNickName("best company 01")
-                .landlord(landlordInserted)
+                //.landlord(landlordInserted)
                 .build();
 
         //landlordService = new LandlordServiceImpl(landlordRepository);
