@@ -5,7 +5,9 @@ import lombok.*;
 
 import javax.persistence.Access;
 import java.util.List;
+@Data
 @AllArgsConstructor(access = AccessLevel.PRIVATE) @Builder
-public class SubscriptionResp extends PagedResponse{
+public class SubscriptionResp // extends PagedResponse
+{
     List<Subscription> subscriptions;
 }

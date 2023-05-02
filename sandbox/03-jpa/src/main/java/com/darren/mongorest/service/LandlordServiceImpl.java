@@ -11,6 +11,7 @@ import com.darren.mongorest.vo.LandlordSubscriptionDataHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 @Service
@@ -26,6 +27,11 @@ public class LandlordServiceImpl implements LandlordService {
     @Override
     public String addLandlordSubscription(LandlordSubscriptionDataHolder landlordSubscriptionDataHolder) {
 
+        var subscription = Subscription.builder()
+                .id(UUID.randomUUID().toString())
+                //.landlord(landlord)
+                .build();
+
         var landlord = Landlord.builder()
                 .id(UUID.randomUUID().toString())
                 .contact(Contact.builder()
@@ -33,16 +39,17 @@ public class LandlordServiceImpl implements LandlordService {
                         .contactInfo(landlordSubscriptionDataHolder.getLandlordHolder().getEmail())
                         .build())
                 .username(landlordSubscriptionDataHolder.getLandlordHolder().getUsername())
-
+                .subscriptions(
+                        Arrays.asList(Subscription.builder().companyNickName(
+                                landlordSubscriptionDataHolder.getLandlordHolder().getCompanyNickName()
+                        ).build())
+                )
                 .build();
 
-        var subscription = Subscription.builder()
-                .id(UUID.randomUUID().toString())
-                //.landlord(landlord)
-                .build();
+
 
         landlordRepository.save(landlord);
-        subscriptionRepository.save(subscription);
+        //subscriptionRepository.save(subscription);
 
 
 
