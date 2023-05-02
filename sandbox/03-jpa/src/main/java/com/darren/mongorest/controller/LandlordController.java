@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.Callable;
 import org.springframework.http.HttpStatus;
 
@@ -33,19 +31,10 @@ public class LandlordController {
         };
     }
 
-    @GetMapping("/getAllLandlordSubscriptionByLandlordId/{id}")
+
+    @GetMapping("/getAllLandlordSubscriptionsByLandlordId/{id}")
     public Callable<ResponseEntity<SubscriptionResp>>
-        getAllLandlordSubscriptionByLandlordId(@PathVariable("id") String id){
-        return () -> {
-            return new ResponseEntity<>(
-                    landlordService.getAllLandlordSubscriptionByLandlordId("bdaf67ee-805a-472f-9464-11d4d6094f3e"),
-                    HttpStatus.OK);
-        };
-    }
-
-
-    @GetMapping("/getList2")
-    public Callable<ResponseEntity<SubscriptionResp>> getList2 (){
+    getAllLandlordSubscriptionsByLandlordId(@PathVariable("id") String id){
         return () -> {
             return new ResponseEntity<>(
                     landlordService.getAllLandlordSubscriptionByLandlordId("bdaf67ee-805a-472f-9464-11d4d6094f3e"),
