@@ -11,7 +11,8 @@ import java.util.List;
 
 @Document("users") @TypeAlias("users")
 @Data
-@SuperBuilder @NoArgsConstructor @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@SuperBuilder @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 
 public class Landlord extends User{
     private List<Subscription> subscriptions;

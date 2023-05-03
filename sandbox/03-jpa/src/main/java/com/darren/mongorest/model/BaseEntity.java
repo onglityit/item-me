@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 
-@SuperBuilder @NoArgsConstructor
+@SuperBuilder @NoArgsConstructor @Data
 public abstract class BaseEntity {
 
     @Id

@@ -34,10 +34,11 @@ public class LandlordServiceImpl implements LandlordService {
 
         var landlord = Landlord.builder()
                 .id(UUID.randomUUID().toString())
-                .contact(Contact.builder()
-                        .contactType(ContactTypeEnum.EMAIL.name())
-                        .contactInfo(landlordSubscriptionDataHolder.getLandlordHolder().getEmail())
-                        .build())
+//                .contact(Contact.builder()
+//                        .contactType(ContactTypeEnum.EMAIL.name())
+//                        .contactInfo(landlordSubscriptionDataHolder.getLandlordHolder().getEmail())
+//                        .build())
+                .email(landlordSubscriptionDataHolder.getLandlordHolder().getEmail())
                 .username(landlordSubscriptionDataHolder.getLandlordHolder().getUsername())
                 .subscriptions(
                         Arrays.asList(Subscription.builder().companyNickName(
