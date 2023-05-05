@@ -16,7 +16,7 @@ import java.util.Set;
 @SuperBuilder @NoArgsConstructor
 @AllArgsConstructor
 
-public abstract class User extends BaseEntity{
+public class User extends BaseEntity{
     //@ReadOnlyProperty
     //@DocumentReference(lookup="{'user':?#{#self._id} }")
     //@Singular

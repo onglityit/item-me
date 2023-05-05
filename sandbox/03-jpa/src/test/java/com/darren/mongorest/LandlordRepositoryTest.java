@@ -44,10 +44,10 @@ public class LandlordRepositoryTest {
 
         landlordInserted = Landlord.builder()
                 .id(generatedLandlordUuid)
-                .contact(Contact.builder()
-                        .contactType(ContactTypeEnum.EMAIL.name())
-                        .contactInfo("a@a.a")
-                        .build())
+//                .contact(Contact.builder()
+//                        .contactType(ContactTypeEnum.EMAIL.name())
+//                        .contactInfo("a@a.a")
+//                        .build())
                 .username("Test1234!")
                 .build();
 

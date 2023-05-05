@@ -19,7 +19,7 @@ public class LandlordController {
     @PostMapping("/addLandlordSubscription")
     public Callable<ResponseEntity<String>> addLandlordSubscription(@RequestBody LandlordSubscriptionDataHolder landlordSubscriptionDataHolder){
         return () ->{
-          return new ResponseEntity<>(landlordService.addLandlordSubscription(landlordSubscriptionDataHolder), HttpStatus.OK);
+          return ResponseEntity.ok(landlordService.addLandlordSubscription(landlordSubscriptionDataHolder));
         };
     }
 
@@ -27,7 +27,7 @@ public class LandlordController {
     public Callable<ResponseEntity<String>> deleteLandlordById(@PathVariable("id") String id,
                                                                   @RequestParam(required = false, defaultValue = "1") String isSoftDelete){
         return () -> {
-            return new ResponseEntity<>(landlordService.deleteLandlordById(id), HttpStatus.OK);
+            return ResponseEntity.ok(landlordService.deleteLandlordById(id));
         };
     }
 
@@ -36,9 +36,8 @@ public class LandlordController {
     public Callable<ResponseEntity<SubscriptionResp>>
     getAllLandlordSubscriptionsByLandlordId(@PathVariable("id") String id){
         return () -> {
-            return new ResponseEntity<>(
-                    landlordService.getAllLandlordSubscriptionByLandlordId("bdaf67ee-805a-472f-9464-11d4d6094f3e"),
-                    HttpStatus.OK);
+            return ResponseEntity.ok(
+                    landlordService.getAllLandlordSubscriptionByLandlordId("bdaf67ee-805a-472f-9464-11d4d6094f3e"));
         };
     }
 }
