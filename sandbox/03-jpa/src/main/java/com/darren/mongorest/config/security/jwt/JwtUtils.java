@@ -3,6 +3,7 @@ package com.darren.mongorest.config.security.jwt;
 import java.util.Date;
 
 import com.darren.mongorest.service.UserDetailsImpl;
+import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +31,7 @@ public class JwtUtils {
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(Keys.secretKeyFor(SignatureAlgorithm.HS256))
                 .compact();
     }
 

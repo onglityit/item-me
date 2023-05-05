@@ -5,7 +5,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.ReadOnlyProperty;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.HashSet;
@@ -15,6 +17,7 @@ import java.util.Set;
 @Data @EqualsAndHashCode(callSuper = false)
 @SuperBuilder @NoArgsConstructor
 @AllArgsConstructor
+@Document("users") @TypeAlias("users")
 
 public class User extends BaseEntity{
     //@ReadOnlyProperty
