@@ -3,6 +3,8 @@ package com.darren.mongorest.config.security;
 import com.darren.mongorest.config.security.jwt.AuthEntryPointJwt;
 import com.darren.mongorest.config.security.jwt.AuthTokenFilter;
 import com.darren.mongorest.service.UserDetailsServiceImpl;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+
+@SecurityScheme(
+        name = "Bearer Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
         // securedEnabled = true,
@@ -64,6 +73,7 @@ public class CustomWebSecurityConfigurerAdapter {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
+                        .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/darren-api-docs/**").permitAll()

@@ -3,6 +3,7 @@ package com.darren.mongorest.controller;
 import com.darren.mongorest.model.response.SubscriptionResp;
 import com.darren.mongorest.service.LandlordService;
 import com.darren.mongorest.vo.LandlordSubscriptionDataHolder;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api")
+@SecurityRequirement(name = "Bearer Authentication")
 public class LandlordController {
     @Autowired
     LandlordService landlordService;
