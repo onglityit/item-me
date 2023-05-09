@@ -66,6 +66,8 @@ public class CustomWebSecurityConfigurerAdapter {
                         .requestMatchers("/api/test/**").permitAll()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/darren-api-docs/**").permitAll()
+                        .requestMatchers("/darren-swagger/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 ;
